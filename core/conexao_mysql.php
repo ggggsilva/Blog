@@ -6,7 +6,7 @@ function conecta() : mysqli
     $banco = 'blog';
     $port = 3306;
     $usuario = 'root';
-    $senha = "masao";
+    $senha = "root";
     $conexao = mysqli_connect($servidor, $usuario, $senha, $banco, $port);
 
     if(!$conexao){
@@ -23,3 +23,4 @@ function desconecta(mysqli $conexao) : void
     mysqli_close($conexao);
 }
 ?>
+

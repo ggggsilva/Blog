@@ -4,28 +4,28 @@
     require_once '../core/sql.php';
     require_once '../core/mysql.php';
 
-    insert_teste(10, 'comentario', '1', '2');
+    insert_teste('Post', 'texto', '1', 'Y-m-d H:i:s');
 
-    function insert_teste($nota, $comentario, $usuario_id, $post_id) : void
+    function insert_teste($titulo, $texto, $usuario_id, $data) : void
     {
-        $dados = ['nota' => $nota
-                , 'comentario' => $comentario
+        $dados = ['titulo' => $titulo
+                , 'texto' => $texto
                 , 'usuario_id' => $usuario_id
-                , 'post_id' => $post_id];
-        insere('avaliacao', $dados);
+                , 'data_postagem' => $data];
+        insere('post', $dados);
     }
 
-   buscar_teste();
+    //buscar_teste();
 
     function buscar_teste() : void
     {
-        $avaliacoes = buscar('avaliacao', ['id', 'nota', 'usuario_id', 'post_id', 'data_criacao'], [],'');
+        $avaliacoes = buscar('post', ['id', 'titulo', 'texto', 'post_id', 'data_criacao'], [],'');
         print_r($avaliacoes);
     }
 
-    update_teste(5, 9, 'comentario', '1', '2');
+    //update_teste(5, 9, 'comentario', '1', '2');
 
-    function update_teste($id, $nota, $comentario, $usuario_id, $post_id) : void
+    function update_teste($id, $titulo, $texto, $usuario_id, $data) : void
     {
         $dados = ['nota' => $nota
                 , 'comentario' => $comentario
@@ -35,9 +35,7 @@
         atualiza('avaliacao', $dados, $criterio);
     }
 
-    buscar_teste();
-
-    del_teste(7);
+    //del_teste(1);
 
     function del_teste($id) : void
     {
@@ -45,5 +43,4 @@
         deleta('avaliacao', $criterio);
     }
 
-    buscar_teste();
 ?>
